@@ -10,7 +10,7 @@ params = {
     'login': '1092244357@qq.com',
     'password': 'lsb19981220'
 }
-response = session.post(login_url, headers=headers, data=params)
+response = session.post(login_url, headers=headers, data=params, verify=False)
 info_url = 'https://www.educoder.net/users/mpcsxw4lb/classrooms'
 resp = requests.get(info_url, headers=headers)
-print(resp.text)
+print(resp.content)
