@@ -19,9 +19,9 @@ class CrawlInfo(Thread):
         while not self.url_queue.empty():
             response = requests.get(self.url_queue.get(), headers=headers)
 
-            print(response.text.encode('utf-8').decode('utf-8'))
+            print(response.text)
             if response.status_code == 200:
-                self.html_queue.put(response.text.encode('utf-8').decode('utf-8'))
+                self.html_queue.put(response.text)
                 # print(html_queue.empty())
                 # print(response.text)
                 # print(self.html_queue)
@@ -39,7 +39,7 @@ class ParseInfo(Thread):
         while not self.html_queue.empty():
             e = etree.HTML(self.html_queue.get())
             # print(e)
-            contents = e.xpath('//div[@class="con"]')
+            contents = e.xpath('///div[@class="c_de_rk_c_data margin"]/a')
             with open('duanzi.txt', 'a', encoding='utf-8') as f:
                 for item in contents:
                     info = item.xpath('string(.)')
@@ -51,8 +51,8 @@ if __name__ == '__main__':
     url_queue = Queue()
     # 存储内容的容器
     html_queue = Queue()
-    base_url = 'https://www.yigeduanzi.com/index_{}.html'
-    for i in range(2, 7):
+    base_url = 'https://b.faloo.com/Rank_{}.html/'
+    for i in range(2, 3):
         new_url = base_url.format(i)
         url_queue.put(new_url)
     # 创建一个爬虫
