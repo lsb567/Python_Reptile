@@ -18,7 +18,7 @@ class CrawlInfo(Thread):
         }
         while not self.url_queue.empty():
             response = requests.get(self.url_queue.get(), headers=headers)
-
+            response.encoding = 'gbk'
             print(response.text)
             if response.status_code == 200:
                 self.html_queue.put(response.text)
