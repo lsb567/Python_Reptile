@@ -7,4 +7,4 @@ class BaiduSpider(scrapy.Spider):
     start_urls = ['http://baidu.com/']
 
     def parse(self, response):
-        print(response.text, '-----------------')
+        print(response.text)
