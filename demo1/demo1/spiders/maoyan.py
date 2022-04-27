@@ -22,4 +22,9 @@ class MaoyanSpider(scrapy.Spider):
         for name, score in zip(names, scores_div):
             item['name'] = name
             item['score'] = score
+
+            if response.url.find('catId=2') != -1:
+                item['type'] = '喜剧'
+            elif response.url.find('catId=3') != -1:
+                item['type'] = '爱情'
             yield item

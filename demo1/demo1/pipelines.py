@@ -14,6 +14,8 @@ class Demo1Pipeline:
         self.filename = open('movie.txt', 'w', encoding='utf-8')
 
     def process_item(self, item, spider):
+        if item['type'] == '喜剧':
+            pass
         # with open('movie.txt', 'a', encoding='utf-8') as f:
         #     f.write(json.dumps(item, ensure_ascii=False) + '\n')
         # print(item)
