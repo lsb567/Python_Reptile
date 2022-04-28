@@ -19,4 +19,3 @@ class ZwwSpider(scrapy.Spider):
         if next_url.find('.html') != -1:
             yield scrapy.Request(response.urljoin(next_url), callback=self.parse)
 
-    
