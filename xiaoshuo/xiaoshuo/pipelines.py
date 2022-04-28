@@ -9,5 +9,17 @@ from itemadapter import ItemAdapter
 
 
 class XiaoshuoPipeline:
+    def open_spider(self, spider):
+        self.file = open('wddf.txt', 'w', encoding='utf-8')
+
     def process_item(self, item, spider):
+        title = item['title']
+        content = item['content']
+        # info = title + '\n' + content + '\n'
+        info = title + '\n'
+        self.file.write(info)
+        self.file.flush()
         return item
+
+    def close_spider(self, spider):
+        self.file.close()
