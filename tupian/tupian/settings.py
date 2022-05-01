@@ -14,7 +14,12 @@ SPIDER_MODULES = ['tupian.spiders']
 NEWSPIDER_MODULE = 'tupian.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36'
+# USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36'
+USER_AGENTS = [
+    'ua1',
+    'ua2',
+    'ua3'
+]
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -45,14 +50,14 @@ ROBOTSTXT_OBEY = False
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 # SPIDER_MIDDLEWARES = {
-#    'tupian.middlewares.TupianSpiderMiddleware': 543,
+#    'tupian.middlewares.TupianDownloaderMiddleware': 543,  # 数字是优先级
 # }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    'tupian.middlewares.TupianDownloaderMiddleware': 543,
-# }
+DOWNLOADER_MIDDLEWARES = {
+   'tupian.middlewares.UserAgentDownloadMiddleware': 343,  # 数字是优先级
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
