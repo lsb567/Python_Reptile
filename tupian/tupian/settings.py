@@ -56,7 +56,8 @@ ROBOTSTXT_OBEY = False
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   'tupian.middlewares.UserAgentDownloadMiddleware': 343,  # 数字是优先级
+    'tupian.middlewares.UserAgentDownloadMiddleware': 343,  # 数字是优先级
+    'tupian.proxymiddleware.ProxyMiddleware': 344
 }
 
 # Enable or disable extensions
